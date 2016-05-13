@@ -2913,7 +2913,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 }
 
 .parallax-image-1 {
-    background: url(../../images/parallax/parallax.jpg);
+    background: url(images/parallax/parallax.jpg);
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -3026,7 +3026,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 /***  -------  Parallax section 2  ------- ***/
 
 .parallax-image-2 {
-    background: url(../../images/parallax/people-collage.jpg) fixed;
+    background: url(images/parallax/people-collage.jpg) fixed;
     background-attachment: fixed; /* IE FIX */
 }
 
@@ -4277,7 +4277,7 @@ tr.CartProduct td, tr.CartProduct th {
 }
 
 .parallax-image-aboutus {
-    background: url(../../images/site/about-bg.jpg) no-repeat 50% -80px fixed;
+    background: url(images/site/about-bg.jpg) no-repeat 50% -80px fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -4566,7 +4566,7 @@ div.quickview {
 /* =============================================================== */
 
 #modalAds .modal-bg-1 {
-    background: url(../../images/site/modal-img-1.jpg) right bottom no-repeat;
+    background: url(images/site/modal-img-1.jpg) right bottom no-repeat;
     background-color: #F3F6FB;
 }
 
