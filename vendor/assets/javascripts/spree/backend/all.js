@@ -7,6 +7,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require spree/backend
-//= require bootstap/bootstrap.min
-//= require jquery/latest/jquery.latest.min.js
+
 //= require_tree .

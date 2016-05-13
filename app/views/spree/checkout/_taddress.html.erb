@@ -1,0 +1,8 @@
+<%= form.fields_for :bill_address do |bill_form| %>
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= Spree.t(:billing_address_jaffa) %></h3>
+  </div>
+  <div class="panel-body">
+    <%= render :partial => 'spree/address/form', :locals => { :form => bill_form, :address_type => 'billing', :address => @order.bill_address } %>
+  </div>
+<% end %>
