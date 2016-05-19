@@ -42,7 +42,28 @@
                                 <h4><%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %></h4>
 
                                 <p><%= product_description(product) %></p>
-                                <span class="size">XL / XXL / S </span>
+                                <span class="size">
+                                <%#= product.variants_and_option_values.each do |type| %>
+                                    <% if product.variants.any? %>
+                                        <% product.variants.each do |variant| %>
+                                            <% colors = [] %>
+                                            <% colors << variant.option_values.joins(:option_type).where("spree_option_types.presentation = 'color'").pluck(:presentation) %>
+
+                                            <% coloured_variants = [] %>
+                                            <% colors.each do |selected_color| %>
+                                                <% coloured_variants << variant if variant.options_text.include?("color: #{selected_color}") %>
+                                            <% end %>
+                                            <% sizes = [] %>
+                                            <% coloured_variants.each do |coloured_variant| %>
+                                                <% str = coloured_variants.options_text %>
+                                                <% sizes << str[str.index(':')+2..str.index(',')-1] %>
+                                            <% end %>
+                                            <% sizes.each do |size| %>
+                                                <%= size %>
+                                            <% end %>
+                                        <% end %>
+                                    <%end%>
+                                </span>
                             </div>
                             <div class="price">
                                 <span><%= display_price(product) %></span>
