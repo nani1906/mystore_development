@@ -1,0 +1,29 @@
+<div class="navbar navbar-tshop navbar-fixed-top megamenu" role="navigation">
+    <ul class="nav navbar-nav">
+        <% max_level = Spree::Config[:max_level_in_taxons_menu] || 1 %>
+          <% @taxonomies.each do |taxonomy| %>
+            <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
+                <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" >
+                    <%#= Spree.t(:taxonomy, :taxonomy => taxonomy.name) %>
+                    <strong><%= taxonomy.name %></strong></a>
+                    <ul class="dropdown-menu">
+                        <li class="megamenu-content">
+                        <!-- megamenu-content -->
+                            <% return '' if max_level < 1 || taxonomy.root.leaf? %>
+                            <% taxons = taxonomy.root.children.map do |taxon| %>
+                                <ul class="col-lg-2  col-sm-2 col-md-2  unstyled"><h3><strong><%= link_to(taxon.name, seo_url(taxon)) %></strong></h3>
+                                    <% taxon.children.map do |child| %>
+                                        <li><strong><h4>
+                                            <%= link_to(child.name, seo_url(child)) %>
+                                        </strong></h4></li>
+                                    <% end %>
+                                </ul>
+                            <% end %>
+                            <% safe_join(taxons, "\n") %>
+                        </li>
+                    </ul>
+                </li>
+            <% end %>
+        <% end %>
+    </ul>
+</div>

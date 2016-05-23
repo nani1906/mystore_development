@@ -1,0 +1,193 @@
+
+<div class="dropdown  cartMenu ">
+  <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-shopping-cart"> </i> Cart($210)<b class="caret"> </b> </a> -->
+  <ul class="nav navbar-nav navbar-right" data-hook>
+    <li id="link-to-cart" data-hook>
+      <noscript>
+        <%= link_to Spree.t(:cart), '/cart' %>
+      </noscript>
+      &nbsp;
+    </li>
+    <script>Spree.fetch_cart()</script>
+  </ul>
+  <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
+    <div class="w100 miniCartTable scroll-pane">
+      <% if @order.line_items.empty? %>
+      <table>
+        <tbody>
+          <tr class="miniCartProduct">
+            <td style="width:20%" class="miniCartProductThumb">
+              <h5>Your Cart is Empty</h5>
+              <%= link_to "Continue Shopping", products_path, :class => 'btn btn-default' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% else %>
+        <div class="cartContent w100">
+          <%= form_for @order, url: update_cart_path, html: { id: 'update-cart' } do |order_form| %>
+            <div class="CartProduct">
+              <div data-hook="cart_items" class="table-responsive">
+                <%= render partial: 'form', locals: { order_form: order_form } %>
+             <!--  </div>
+              <div class="cartFooter w100"> -->
+                <div class="box-footer">
+                  <div class="pull-left">
+                    <%= link_to products_path, :class => 'btn btn-success' do %>
+                      <i class="fa fa-arrow-left">&nbsp; Continue shopping </i>
+                    <% end %>
+                  </div>
+                  <div class="pull-right">
+                    <%= button_tag class: 'btn btn-info', id: 'update-button' do %>
+                          <i class="fa fa-undo">&nbsp;<%= Spree.t(:update) %></i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <!--/ cartFooter -->
+            </div>
+          <% end %>
+        </div>
+        <!--cartContent-->
+      <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <table>
+        <tbody>
+          <tr class="miniCartProduct">
+            <td style="width:20%" class="miniCartProductThumb">
+              <div>
+                <a href="product-details.html"> <img src="assets/product/3.jpg" alt="img"></a>
+              </div>
+            </td>
+            <td style="width:40%">
+              <div class="miniCartDescription">
+                <h4><a href="product-details.html"> TSHOP Tshirt DO9 </a></h4>
+                <span class="size"> 12 x 1.5 L </span>
+                <div class="price"><span> $22 </span></div>
+              </div>
+            </td>
+            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
+            <td style="width:15%" class="miniCartSubtotal"><span> $33 </span></td>
+            <td style="width:5%" class="delete"><a> x </a></td>
+          </tr>
+          <tr class="miniCartProduct">
+            <td style="width:20%" class="miniCartProductThumb">
+              <div>
+                <a href="product-details.html"> <img src="assets/product/2.jpg" alt="img"></a>
+              </div>
+            </td>
+            <td style="width:40%">
+              <div class="miniCartDescription">
+                <h4><a href="product-details.html"> TShir TSHOP 09 </a></h4>
+                <span class="size"> 12 x 1.5 L </span>
+                <div class="price"><span> $15 </span></div>
+              </div>
+            </td>
+            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
+            <td style="width:15%" class="miniCartSubtotal"><span> $120 </span></td>
+            <td style="width:5%" class="delete"><a> x </a></td>
+          </tr>
+          <tr class="miniCartProduct">
+            <td style="width:20%" class="miniCartProductThumb">
+                <div><a href="product-details.html"> <img src="assets/product/5.jpg" alt="img">
+                </a></div>
+            </td>
+            <td style="width:40%">
+                <div class="miniCartDescription">
+                    <h4><a href="product-details.html"> Tshir 2014 </a></h4>
+                    <span class="size"> 12 x 1.5 L </span>
+
+                    <div class="price"><span> $30 </span></div>
+                </div>
+            </td>
+            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
+            <td style="width:15%" class="miniCartSubtotal"><span> $80 </span></td>
+            <td style="width:5%" class="delete"><a> x </a></td>
+          </tr>
+          <tr class="miniCartProduct">
+            <td style="width:20%" class="miniCartProductThumb">
+                <div><a href="product-details.html"> <img src="assets/product/3.jpg" alt="img">
+                </a></div>
+            </td>
+            <td style="width:40%">
+                <div class="miniCartDescription">
+                    <h4><a href="product-details.html"> TSHOP T shirt DO20 </a></h4>
+                    <span class="size"> 12 x 1.5 L </span>
+
+                    <div class="price"><span> $15 </span></div>
+                </div>
+            </td>
+            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
+            <td style="width:15%" class="miniCartSubtotal"><span> $55 </span></td>
+            <td style="width:5%" class="delete"><a> x </a></td>
+          </tr>
+          <tr class="miniCartProduct">
+            <td style="width:20%" class="miniCartProductThumb">
+                <div><a href="product-details.html"> <img src="assets/product/4.jpg" alt="img">
+                </a></div>
+            </td>
+            <td style="width:40%">
+                <div class="miniCartDescription">
+                    <h4><a href="product-details.html"> T shirt Black </a></h4>
+                    <span class="size"> 12 x 1.5 L </span>
+
+                    <div class="price"><span> $44 </span></div>
+                </div>
+            </td>
+            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
+            <td style="width:15%" class="miniCartSubtotal"><span> $40 </span></td>
+            <td style="width:5%" class="delete"><a> x </a></td>
+          </tr>
+          <tr class="miniCartProduct">
+            <td style="width:20%" class="miniCartProductThumb">
+                <div><a href="product-details.html"> <img src="assets/site/winter.jpg"
+                                                          alt="img"> </a></div>
+            </td>
+            <td style="width:40%">
+                <div class="miniCartDescription">
+                    <h4><a href="product-details.html"> G Star T shirt </a></h4>
+                    <span class="size"> 12 x 1.5 L </span>
+
+                    <div class="price"><span> $80 </span></div>
+                </div>
+            </td>
+            <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
+            <td style="width:15%" class="miniCartSubtotal"><span> $8.80 </span></td>
+            <td style="width:5%" class="delete"><a> x </a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--/.miniCartTable-->
+    <div class="miniCartFooter text-right">
+        <h3 class="text-right subtotal"> Subtotal: $210 </h3>
+        <%= link_to "VIEW CART", '/cart', :class => "btn btn-sm btn-danger"%>
+        <%= link_to "CHECKOUT", '/checkout/address', :class => "btn btn-sm btn-primary"%>
+    </div>
+    <!--/.miniCartFooter-->
+  </div>
+  <!--/.dropdown-menu-->
+</div>
+<!--/.cartMenu-->
