@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-sm-6" data-hook="billing_fieldset_wrapper">
-    <div class="panel panel-default" id="billing" data-hook>
+    <div id="billing" data-hook>
       <%= form.fields_for :bill_address do |bill_form| %>
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= Spree.t(:billing_address_jaffa) %></h3>
+        <div class="col-lg-12">
+          <h2 class="block-title-2"> To add a new address, please fill out the form below. </h2>
         </div>
         <div class="panel-body">
           <%= render :partial => 'spree/address/form', :locals => { :form => bill_form, :address_type => 'billing', :address => @order.bill_address } %>
@@ -13,16 +13,16 @@
   </div>
 
   <div class="col-sm-6" data-hook="shipping_fieldset_wrapper">
-    <div class="panel panel-default" id="shipping" data-hook>
+    <div id="shipping" data-hook>
       <%= form.fields_for :ship_address do |ship_form| %>
-        <div class="panel-heading">
-          <h3 class="panel-title"><%= Spree.t(:shipping_address_jaffa) %></h3>
+        <div class="col-lg-12">
+          <h2 class="block-title-2">TO ADD A BILLING ADDRESS, PLEASE FILL OUT THE FORM BELOW </h2>
         </div>
         <div class="panel-body">
-          <p class="field checkbox" data-hook="use_billing">
+          <p class="field checkbox" data-hook="use_billing" style="padding-left: 25px">
             <%= label_tag :order_use_billing, :id => 'use_billing' do %>
               <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address? %>
-              <%= Spree.t(:use_billing_address) %>
+              <%= Spree.t(:same_as_billing_address) %>
             <% end %>
           </p>
           <%= render :partial => 'spree/address/form', :locals => { :form => ship_form, :address_type => 'shipping', :address => @order.ship_address } %>
@@ -32,13 +32,25 @@
   </div>
 </div>
 
-<div class="well text-right form-buttons" data-hook="buttons">
-  <%= submit_tag Spree.t(:save_and_continue), :class => 'btn btn-lg btn-success' %>
-  <% if try_spree_current_user %>
-    <span data-hook="save_user_address">
-      &nbsp; &nbsp;
-      <%= check_box_tag 'save_user_address', '1', try_spree_current_user.respond_to?(:persist_order_address) %>
-      <%= label_tag :save_user_address, Spree.t(:save_my_address) %>
-    </span>
-  <% end %>
+<div class="cartFooter w100">
+  <div class="box-footer">
+    <div class="pull-left">
+      <%= link_to products_path, :class => 'btn btn-default' do%>
+        <i class="fa fa-arrow-left"></i> &nbsp; Back to Shop
+      <%end%>
+    </div>
+    <div class="pull-right">
+      <button type="submit" class="btn btn-primary btn-small">
+        Shipping method <i class="fa fa-arrow-circle-right"></i>
+      </button>
+      <% if try_spree_current_user %>
+        <span data-hook="save_user_address">
+          &nbsp; &nbsp;
+          <%= check_box_tag 'save_user_address', '1', try_spree_current_user.respond_to?(:persist_order_address) %>
+          <%= label_tag :save_user_address, 'Save my address' %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+<!--/ cartFooter -->  
 </div>

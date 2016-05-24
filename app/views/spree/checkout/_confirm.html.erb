@@ -1,13 +1,24 @@
-<div class="panel panel-default" id="order_details" data-hook>
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= Spree.t(:confirm) %></h3>
-  </div>
+<div id="order_details" data-hook>
+  <div class="col-lg-12">
+	  <h2 class="block-title-2"> Review Order </h2>
+	</div>
   <div class="panel-body">
     <%= render :partial => 'spree/shared/order_details', :locals => { :order => @order } %>
   </div>
 </div>
 
-<div class="well text-right form-buttons" data-hook="buttons">
-  <%= submit_tag Spree.t(:place_order), :class => 'btn btn-lg btn-success' %>
+<div class="cartFooter w100">
+  <div class="box-footer">
+    <div class="pull-left">
+      <%= link_to checkout_state_path(:payment), :class => 'btn btn-default' do%>
+        <i class="fa fa-arrow-left"></i> &nbsp; Back to payment </a>
+      <%end%>
+    </div>
+    <div class="pull-right">
+	    <button type="submit" class="btn btn-primary btn-small">
+	      Confirm order now <i class="fa fa-arrow-circle-right"></i>
+	    </button>
+	  </div>
+  </div>
   <script>Spree.disableSaveOnClick();</script>
 </div>
