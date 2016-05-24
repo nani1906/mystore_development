@@ -1,11 +1,20 @@
 <!-- Modal Login start -->
 <div class="modal signUpContent fade" id="ModalLogin" tabindex="-1" role="dialog">
-    <div class="modal-dialog ">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
-                <h3 class="modal-title-site text-center"> Login to TSHOP </h3>
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+          <h3 class="modal-title-site text-center"> Login to TSHOP </h3>
+      </div>
+      <div class="modal-body">
+        <form class="new_spree_user" id="new_spree_user" action="/login" accept-charset="UTF-8" method="post">
+          <input name="utf8" type="hidden" value="✓">
+          <input type="hidden" name="authenticity_token" value="kJMtA9o2e7f+vAhjXjfKbEVaqPcwwOi4dv/aOwyhdCadvpmGOMngHwWITb0LlslpXXT0bF2tumdi70Zt+ZRSuw==">
+          <fieldset id="password-credentials">
+            <div class="form-group">
+              <input class="form-control" tabindex="1" placeholder="Email" type="email" name="spree_user[email]" id="spree_user_email">
             </div>
+<<<<<<< HEAD
             <div class="modal-body">
 
 
@@ -65,142 +74,145 @@
 
                 <!--userForm-->
 
+=======
+            <div class="form-group">
+              <input class="form-control" tabindex="2" placeholder="Password" type="password" name="spree_user[password]" id="spree_user_password">
+>>>>>>> origin/master
             </div>
-            <div class="modal-footer">
-                <p class="text-center"> Not here before? <a data-toggle="modal" data-dismiss="modal"
-                                                            href="#ModalSignup"> Sign Up. </a> <br>
-                    <a href="#"> Lost your password? </a></p>
+            <div class="checkbox">
+              <label class="">
+                <input name="spree_user[remember_me]" type="hidden" value="0"><div class="icheckbox_square-green iCheck-margin" style="position: relative;"><input type="checkbox" value="1" name="spree_user[remember_me]" id="spree_user_remember_me" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                <label for="spree_user_remember_me" class="">Remember me</label>
+              </label>
             </div>
-        </div>
-        <!-- /.modal-content -->
+            <div class="form-group">
+              <input type="submit" name="commit" value="Login" class="btn btn-lg btn-success btn-block" tabindex="3">
+            </div>
+          </fieldset>
+        </form> <!--userForm-->
+      </div>
+      <div class="modal-footer">
+          <p class="text-center"> Not here before? <a data-toggle="modal" data-dismiss="modal"
+                                                      href="#ModalSignup"> Sign Up. </a> <br>
+              <a href="#"> Lost your password? </a></p>
+      </div>
+    </div>  <!-- /.modal-content -->
+  </div>  <!-- /.modal-dialog -->
+</div>  <!-- /.Modal Login -->
 
-    </div>
-    <!-- /.modal-dialog -->
 
-</div>
-<!-- /.Modal Login -->
+
 
 <!-- Modal Signup start -->
 <div class="modal signUpContent fade" id="ModalSignup" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
-                <h3 class="modal-title-site text-center"> REGISTER </h3>
-            </div>
-            <div class="modal-body">
-                <div class="control-group"><a class="fb_button btn  btn-block btn-lg " href="#"> SIGNUP WITH
-                    FACEBOOK </a></div>
-                <h5 style="padding:10px 0 10px 0;" class="text-center"> OR </h5>
-
-                <form class="new_spree_user" id="new_spree_user" action="/signup" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="zewnOuu1lV6siz+73RAk7fRLWfjlU62xvKYq/82Q7c7iGjIMf2vhfz3AMr0r1Z+ExAKAaaBuI0CJSjvvegN9Pg==">
-                            <div data-hook="signup_inside_form">
-                              <fieldset id="password-credentials">
-                  <div class="form-group">
-                    <input class="form-control" placeholder="Email" type="email" name="spree_user[email]" id="spree_user_email">
-                  </div>
-                  <hr>
-                  <div class="form-group">
-                    <input class="form-control" placeholder="Password" type="password" name="spree_user[password]" id="spree_user_password">
-                  </div> 
-                  <div class="form-group">
-                    <input class="form-control" placeholder="Password Confirmation" type="password" name="spree_user[password_confirmation]" id="spree_user_password_confirmation">
-                  </div> 
-                </fieldset>
-                <div data-hook="signup_below_password_fields"></div>
-                              <p><input type="submit" name="commit" value="Create" class="btn btn-lg btn-success btn-block"></p>
-                            </div>
-                </form>
-
-
-
-<!--                 <div class="form-group reg-username">
-                    <div>
-                        <input name="email" class="form-control input" size="20" placeholder="Enter Email"
-                               type="text">
-                    </div>
-                </div>
-                <div class="form-group reg-email">
-                    <div>
-                        <input name="password" class="form-control input" size="20" placeholder="Enter password" type="password">
-                    </div>
-                </div>
-                <div class="form-group reg-password">
-                    <div>
-                        <input name="password_confirmation" class="form-control input" size="20" placeholder="Password"
-                               type="password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <div class="checkbox login-remember">
-                            <label>
-                                <input name="rememberme" id="rememberme" value="forever" checked="checked"
-                                       type="checkbox">
-                                Remember Me </label>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class = "password-credentials">
-                        <input name="submit" class="btn  btn-block btn-lg btn-primary" value="REGISTER" type="submit">
-                    </div>
-                </div>
- -->
-
-
-
-                <!--userForm-->
-
-            </div>
-            <div class="modal-footer">
-                <p class="text-center"> Already member? <a data-toggle="modal" data-dismiss="modal" href="#ModalLogin">
-                    Sign in </a></p>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+        <h3 class="modal-title-site text-center"> REGISTER </h3>
+      </div>
+      <div class="modal-body">
+        <div class="control-group">
+          <a class="fb_button btn  btn-block btn-lg " href="#"> SIGNUP WITH FACEBOOK </a>
         </div>
-        <!-- /.modal-content -->
+        <h5 style="padding:10px 0 10px 0;" class="text-center"> OR </h5>
+        <form class="new_spree_user" id="new_spree_user" action="/signup" accept-charset="UTF-8" method="post">
+          <input name="utf8" type="hidden" value="✓">
+          <input type="hidden" name="authenticity_token" value="zewnOuu1lV6siz+73RAk7fRLWfjlU62xvKYq/82Q7c7iGjIMf2vhfz3AMr0r1Z+ExAKAaaBuI0CJSjvvegN9Pg==">
+          <div data-hook="signup_inside_form">
+            <fieldset id="password-credentials">
+              <div class="form-group">
+                <input class="form-control" placeholder="Email" type="email" name="spree_user[email]" id="spree_user_email">
+              </div>
+              <hr>
+              <div class="form-group">
+                <input class="form-control" placeholder="Password" type="password" name="spree_user[password]" id="spree_user_password">
+              </div> 
+              <div class="form-group">
+                <input class="form-control" placeholder="Password Confirmation" type="password" name="spree_user[password_confirmation]" id="spree_user_password_confirmation">
+              </div> 
+            </fieldset>
+            <div data-hook="signup_below_password_fields">
+            </div>
+            <p>
+              <input type="submit" name="commit" value="Create" class="btn btn-lg btn-success btn-block">
+            </p>
+          </div>
+        </form>  <!--userForm-->
+      </div>
+      <div class="modal-footer">
+        <p class="text-center"> Already member? 
+          <a data-toggle="modal" data-dismiss="modal" href="#ModalLogin"> Sign in </a>
+        </p>
+      </div>
+    </div>    <!-- /.modal-content -->
+  </div>   <!-- /.modal-dialog -->
+</div>  <!-- /.ModalSignup End -->
 
-    </div>
-    <!-- /.modal-dialog -->
 
-</div>
-<!-- /.ModalSignup End -->
+
 
 <!-- Fixed navbar start -->
 <div class="navbar navbar-tshop navbar-fixed-top megamenu" role="navigation">
-    <div class="navbar-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
-                    <div class="pull-left ">
-                        <ul class="userMenu ">
-                            <li><a href="#"> <span class="hidden-xs">HELP</span><i
-                                    class="glyphicon glyphicon-info-sign hide visible-xs "></i> </a></li>
-                            <li class="phone-number"><a href="callto:+12025550151"> <span> <i
-                                    class="glyphicon glyphicon-phone-alt "></i></span> <span class="hidden-xs"
-                                                                                             style="margin-left:5px"> +1-202-555-0151 </span>
-                            </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
-                    <div class="pull-right">
-                        <ul class="userMenu">
-                            <li><%= link_to "My Account", account_path, :class => "hidden-xs"%><i class="glyphicon glyphicon-log-in hide visible-xs "></i></li>
-                            <li>
-                            <% if (!spree_user_signed_in?) %>
-                              <a href="#" data-toggle="modal" data-target="#ModalLogin"> <span class="hidden-xs">Sign In</span><i class="glyphicon glyphicon-log-in hide visible-xs "></i></a>
-                              <a href="#" data-toggle="modal" data-target="#ModalSignup"> Create Account</a>
-                            <% else %>
-                              <%= link_to "Sign out", logout_path, :class => "hidden-xs"%><i class="glyphicon glyphicon-log-in hide visible-xs "></i>
-                                </li>
-                              <% end %>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <!-- navbar-top start -->
+  <div class="navbar-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+          <div class="pull-left ">
+            <ul class="userMenu ">
+              <li>
+                <a href="#"> <span class="hidden-xs">HELP</span>
+                  <i class="glyphicon glyphicon-info-sign hide visible-xs "></i>
+                </a>
+              </li>
+              <li class="phone-number">
+                <a href="callto:+12025550151">
+                  <span><i class="glyphicon glyphicon-phone-alt "></i></span>
+                  <span class="hidden-xs" style="margin-left:5px"> +1-234-567-8901 </span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
+          <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
+            <div class="pull-right">
+              <ul class="userMenu">
+                <li>
+                  <%= link_to "My Account", account_path, :class => "hidden-xs"%>
+                  <i class="glyphicon glyphicon-log-in hide visible-xs "></i>
+                </li>
+                <li>
+                  <% if (!spree_user_signed_in?) %>
+                    <a href="#" data-toggle="modal" data-target="#ModalLogin">
+                      <span class="hidden-xs">Sign In</span>
+                      <i class="glyphicon glyphicon-log-in hide visible-xs "></i>
+                    </a>
+                    <a href="#" data-toggle="modal" data-target="#ModalSignup"> Create Account</a>
+                    <% else %>
+                      <%= link_to "Sign out", logout_path, :class => "hidden-xs"%>
+                      <i class="glyphicon glyphicon-log-in hide visible-xs "></i>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
     </div>
+  </div>  <!--/.navbar-top-->
+
+  <div class="container">
+    <div class="navbar-header">
+      <%=link_to( image_tag('/assets/logo.png'), root_url, :class=>"navbar-brand") %>
+      <!-- this part for mobile -->
+      <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
+        <div class="input-group">
+          <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"></i></button>
+        </div>
+        <!-- /input-group -->
+      </div>
+    </div>
+<<<<<<< HEAD
     <!--/.navbar-top-->
     <div class="container">
             <div class="navbar-header">
@@ -730,24 +742,111 @@
                     <!--/.search-box -->
                 </div>
                 <!--/.navbar-nav hidden-xs-->
+=======
+    <!-- nav-collapse start -->
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <% max_level = Spree::Config[:max_level_in_taxons_menu] || 1 %>
+          <% @taxonomies.each do |taxonomy| %>
+            <% cache [I18n.locale, taxonomy, max_level, @taxon] do %>
+              <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" >
+                <%#= Spree.t(:taxonomy, :taxonomy => taxonomy.name) %>
+                <strong><%= taxonomy.name %></strong></a>
+                <ul class="dropdown-menu">
+                  <li class="megamenu-content">
+                  <!-- megamenu-content -->
+                    <% return '' if max_level < 1 || taxonomy.root.leaf? %>
+                    <% taxons = taxonomy.root.children.map do |taxon| %>
+                      <ul class="col-lg-2  col-sm-2 col-md-2  unstyled">
+                        <h3><strong><%= link_to(taxon.name, seo_url(taxon)) %></strong></h3>
+                        <% taxon.children.map do |child| %>
+                          <li>
+                            <strong><h4><%= link_to(child.name, seo_url(child)) %></strong></h4>
+                          </li>
+                        <% end %>
+                      </ul>
+                    <% end %>
+                    <% safe_join(taxons, "\n") %>
+                  </li>
+                </ul>
+              </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <!--- this part will be hidden for mobile version -->
+      <div class="nav navbar-nav navbar-right hidden-xs">
+        <div class="dropdown  cartMenu ">
+          <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-shopping-cart"> </i> Cart($210)<b class="caret"> </b> </a> -->
+          <ul class="nav navbar-nav navbar-right" data-hook>
+            <li id="link-to-cart" data-hook>
+              <noscript>
+                <%= link_to Spree.t(:cart), '/cart' %>
+              </noscript>
+              &nbsp;
+            </li>
+            <script>Spree.fetch_cart()</script>
+          </ul>
+          <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
+            <div class="w100 miniCartTable scroll-pane">
+              <table>
+                <tbody>
+                  <tr class="miniCartProduct">
+                    <td style="width:20%" class="miniCartProductThumb">
+                      <div>
+                        <a href="product-details.html"> <img src="assets/product/3.jpg" alt="img"></a>
+                      </div>
+                    </td>
+                    <td style="width:40%">
+                      <div class="miniCartDescription">
+                        <h4><a href="product-details.html"> TSHOP Tshirt DO9 </a></h4>
+                        <span class="size"> 12 x 1.5 L </span>
+                        <div class="price"><span> $22 </span></div>
+                      </div>
+                    </td>
+                    <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
+                    <td style="width:15%" class="miniCartSubtotal"><span> $33 </span></td>
+                    <td style="width:5%" class="delete"><a> x </a></td>
+                  </tr>
+                </tbody>
+              </table>
+>>>>>>> origin/master
             </div>
-            <!--/.nav-collapse -->
-
-        </div>
-        <!--/.container -->
-
-        <div class="search-full text-right"><a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
-
-            <div class="searchInputBox pull-right">
-                <input type="search" data-searchurl="search?=" name="q" placeholder="start typing and hit enter to search"
-                       class="search-input">
-                <button class="btn-nobg search-btn" type="submit"><i class="fa fa-search"> </i></button>
+            <!--/.miniCartTable-->
+            <div class="miniCartFooter text-right">
+                <!-- <h3 class="text-right subtotal"> Subtotal: $210 </h3> -->
+                <%= link_to "VIEW CART", '/cart', :class => "btn btn-sm btn-danger"%>
+                <%= link_to "CHECKOUT", '/checkout/address', :class => "btn btn-sm btn-primary"%>
             </div>
+            <!--/.miniCartFooter-->
+          </div>
+          <!--/.dropdown-menu-->
         </div>
-        <!--/.search-full-->
+        <!--/.cartMenu-->
 
+        <div class="search-box">
+          <div class="input-group">
+            <button class="btn btn-nobg getFullSearch" type="button"><i class="fa fa-search"> </i></button>
+          </div> 
+          <!-- /input-group -->
+        </div>
+        <!--/.search-box -->
+      </div>
+      <!--/.navbar-nav hidden-xs-->
     </div>
-    <!-- /.Fixed navbar  -->
+    <!--/. navbar collapse -->
+  </div>
+  <!--/.container -->
+
+  <div class="search-full text-right">
+    <a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
+      <div class="searchInputBox pull-right">
+          <input type="search" data-searchurl="search?=" name="q" placeholder="start typing and hit enter to search" class="search-input">
+          <button class="btn-nobg search-btn" type="submit"><i class="fa fa-search"> </i></button>
+      </div>
+  </div>
+  <!--/.search-full-->
+</div>
+<!-- /.Fixed navbar  -->
 
 <!-- Le javascript
 ================================================== -->
