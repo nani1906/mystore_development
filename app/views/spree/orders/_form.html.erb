@@ -6,13 +6,12 @@
         <div class="cartContent w100">
           <div class="CartProduct">
             <div data-hook="cart_items" class="table-responsive">
-              <%#= render partial: 'form', locals: { order_form: order_form } %>
               <table class="table" id="cart-detail" data-hook>
                 <thead>
                   <tr class="CartProduct cartTableHeader">
                     <th class="cart-item-description-header" colspan="2"><%= Spree.t(:item) %></th>
                     <th class="cart-item-price-header"><%= Spree.t(:price) %></th>
-                    <th class="cart-item-quantity-header"><%= Spree.t(:qty) %></th>
+                    <th class="cart-item-quantity-header"><%= Spree.t(:quantity) %></th>
                     <th class="cart-item-total-header"><%= Spree.t(:total) %></th>
                     <th class="cart-item-delete-header"></th>
                   </tr>
@@ -21,18 +20,11 @@
                   <%= render partial: 'spree/orders/line_item', collection: order_form.object.line_items, locals: { order_form: order_form } %>
                 </tbody>
                 <% if @order.adjustments.nonzero.exists? || @order.line_item_adjustments.nonzero.exists? || @order.shipment_adjustments.nonzero.exists? || @order.shipments.any? %>
-                  <tr class="cart-subtotal">
-                    <td colspan="4" align='right'>
-                      <h5><%= Spree.t(:cart_subtotal, count: @order.line_items.sum(:quantity)) %></h5>
-                    </td>
-                    <td colspan><h5><%= order_form.object.display_item_total %></h5></td>
-                    <td></td>
-                  </tr>
-                  <%= render "spree/orders/adjustments" %>
+                  <%#= render "spree/orders/adjustments" %>
                   <% end %>
                   <tr class="CartProduct cartTableHeader">
                     <td colspan="4" align='right'>TOTAL&nbsp;</td>
-                    <td align='right' class="price"><%= order_form.object.display_total %></td>
+                    <td align='right' class="price"><%= order_form.object.display_item_total %></td>
                     <td></td>
                   </tr>
               </table>
@@ -68,24 +60,27 @@
             <table id="cart-summary" class="std table">
               <tbody>
                 <tr>
-                    <td>Total products</td>
-                    <td class="price"><%= order_form.object.display_total %></td>
+                    <td>Total number of products</td>
+                    <td class=" site-color" id="total-quantity">
+                      <h3><strong><%= order_form.object.quantity %></strong></h3>
+                    </td>
                 </tr>
-                <tr style="">
+<!--                 <tr style="">
                     <td>Shipping</td>
                     <td class="price"><span class="success">Free shipping!</span></td>
-                </tr>
-                <tr class="cart-total-price ">
+                </tr> -->
+<!--                 <tr class="cart-total-price ">
                     <td>Total (tax excl.)</td>
                     <td class="price"><%= order_form.object.display_total %></td>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                     <td>Total tax</td>
                     <td class="price" id="total-tax">$0.00</td>
-                </tr>
+                  <%#= render "spree/orders/adjustments" %>
+                </tr> -->
                 <tr>
-                  <td> Total</td>
-                  <td class=" site-color" id="total-price"><%= order_form.object.display_total %></td>
+                  <td> Total Products Amount</td>
+                  <td class=" site-color" id="total-price"><%= order_form.object.display_item_total %></td>
                 </tr>
                 <tr>
                   <td colspan="2">
