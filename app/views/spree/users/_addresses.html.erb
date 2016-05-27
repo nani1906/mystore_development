@@ -1,0 +1,72 @@
+<% if (@orders.present? || !user.ship_address_id.blank?) %>
+  <% id1 = user.ship_address_id.inspect %>
+  <% id2 = user.bill_address_id.inspect %>
+  <h3>Ship Address</h3><% ad1 = Spree::Address.find(id1) %>
+  <% if !ad1.blank? %>
+    <table class="table table-striped order-summary">
+      <thead class="active">
+      <tr>
+        <th class="order-number">Firstname</th>
+        <th class="order-date">Lastname</th>
+        <th class="order-status">Addressline1</th>
+        <th class="order-payment-state">Addressline2</th>
+        <th class="order-shipment-state">City</th>
+        <th class="order-total">Zip Code</th>
+        <th class="order-status">Phone</th>
+        <th class="order-payment-state">State Name</th>
+        <th class="order-total">Created on</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+         <td class="order-number"><%= ad1.firstname %></td>
+         <td class="order-number"><%= ad1.lastname %></td>
+         <td class="order-number"><%= ad1.address1 %></td>
+         <td class="order-number"><%= ad1.address2 %></td>
+         <td class="order-number"><%= ad1.city %></td>
+         <td class="order-number"><%= ad1.zipcode %></td>
+         <td class="order-number"><%= ad1.phone %></td>
+         <td class="order-number"><%= ad1.state_name %></td>
+         <td class="order-number"><%= ad1.created_at %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="alert alert-info">You have no any Shipping address yet </div>
+  <% end %>
+  <h3>Bill Address</h3><% ad2 = Spree::Address.find(id2) %>
+  <% if !ad2.blank? %>
+    <table class="table table-striped order-summary">
+      <thead class="active">
+      <tr>
+        <th class="order-number">Firstname</th>
+        <th class="order-date">Lastname</th>
+        <th class="order-status">Addressline1</th>
+        <th class="order-payment-state">Addressline2</th>
+        <th class="order-shipment-state">City</th>
+        <th class="order-total">Zip Code</th>
+        <th class="order-status">Phone</th>
+        <th class="order-payment-state">State Name</th>
+        <th class="order-total">Created on</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+         <td class="order-number"><%= ad2.firstname %></td>
+         <td class="order-number"><%= ad2.lastname %></td>
+         <td class="order-number"><%= ad2.address1 %></td>
+         <td class="order-number"><%= ad2.address2 %></td>
+         <td class="order-number"><%= ad2.city %></td>
+         <td class="order-number"><%= ad2.zipcode %></td>
+         <td class="order-number"><%= ad2.phone %></td>
+         <td class="order-number"><%= ad2.state_name %></td>
+         <td class="order-number"><%= ad2.created_at %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="alert alert-info">You have no Billing address yet </div>
+  <% end %>
+<% else %>
+  <div class="alert alert-info">You have no Addresses yet </div>
+<% end %>

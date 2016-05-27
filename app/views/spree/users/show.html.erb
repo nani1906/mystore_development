@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-lg-9 col-md-9 col-sm-7">   
+      <div class="row userInfo">
+        <div class="col-xs-12 col-sm-12">
+          <h1 class="section-title-inner"><span><i class="glyphicon glyphicon-user"></i> My personal information </span></h1>
+          <div data-hook="account_summary" class="account-summary well">
+            <dl id="user-info">
+              <dt><%= Spree.t(:email) %></dt>
+              <dd><%= @user.email %> (<%= link_to Spree.t(:edit), spree.edit_account_path %>)</dd>
+            </dl>
+          </div>
+          <h1 class="section-title-inner"><span><i class="fa fa-list-alt"></i> My Orders List </span></h1>
+          <%= render :partial => 'orders' %>
+          <h1 class="section-title-inner">
+            <span><i class="fa fa-map-marker"></i> My addresses </span>
+          </h1>
+          <%= render :partial => 'addresses' , :locals => { :user => @user }%>
+          <h1 class="section-title-inner">
+            <span><i class="glyphicon glyphicon-heart"></i> My Wisthlist </span>
+          </h1>
+          <%= render :partial => 'wishlist' %>
+          <div class="clear clearfix"></div>
+        </div>
+      </div>
+      <!--/row end-->
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-5"></div>
+</div>
+<!--/row-->
+
+<div style="clear:both"></div>
+</div>
+<!-- /wrapper -->
+<div class="gap"></div>
