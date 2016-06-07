@@ -7,15 +7,15 @@
           <% products.each do |product| %>
             <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
             <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
-              <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                <div class="product">
+              <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6" style="margin-bottom:35px">
+                <div class="product" style="520px">
                   <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left"><i class="glyphicon glyphicon-heart"></i></a>
                   <div class="image">
 <!--                     <div class="quickview">
                         <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
                            data-target="#productSetailsModalAjax">Quick View </a>
                     </div> -->
-                  <%= link_to small_image(product, itemprop: "image"), url, itemprop: 'url' %>
+                  <%= link_to product_image(product), url, itemprop: 'url' %>
                   <div class="promotion"><span class="new-product"> NEW</span>
                     <% promotions = product.possible_promotions %>
                     <% if promotions.any? %>

@@ -17,7 +17,11 @@
     <br class="clear" />
 
     <p data-hook="links">
-      <%= link_to Spree.t(:back_to_store), spree.root_path, class: "button" %>
+      <div class="pull-left">
+        <%= link_to spree.root_path, :class => 'btn btn-success' do %>
+          <i class="fa fa-arrow-left">&nbsp; Go Back to Store </i>
+        <% end %>
+      </div>
       <% unless order_just_completed?(@order) %>
         <% if try_spree_current_user && respond_to?(:spree_account_path) %>
           <%= link_to Spree.t(:my_account), spree_account_path, class: "button" %>
