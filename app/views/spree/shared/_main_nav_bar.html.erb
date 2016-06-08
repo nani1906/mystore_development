@@ -4,40 +4,85 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
-          <h3 class="modal-title-site text-center"> Login to TSHOP </h3>
+          <h3 class="modal-title-site text-center"> Login to LSHOP </h3>
       </div>
       <div class="modal-body">
-        <form class="new_spree_user" id="new_spree_user" action="/login" accept-charset="UTF-8" method="post">
-          <input name="utf8" type="hidden" value="✓">
-          <input type="hidden" name="authenticity_token" value="kJMtA9o2e7f+vAhjXjfKbEVaqPcwwOi4dv/aOwyhdCadvpmGOMngHwWITb0LlslpXXT0bF2tumdi70Zt+ZRSuw==">
+        <%= form_for Spree::User.new, :as => :spree_user, :url => spree.create_new_session_path do |f| %>
+          <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
           <fieldset id="password-credentials">
             <div class="form-group">
-              <input class="form-control" tabindex="1" placeholder="Email" type="email" name="spree_user[email]" id="spree_user_email">
+              <%= f.email_field :email, :class => 'form-control', :tabindex => 1, :placeholder => Spree.t(:email) %>
             </div>
-
             <div class="form-group">
-              <input class="form-control" tabindex="2" placeholder="Password" type="password" name="spree_user[password]" id="spree_user_password">
+              <%= f.password_field :password, :class => 'form-control', :tabindex => 2, :placeholder => Spree.t(:password) %>
             </div>
-            <div class="checkbox">
-              <label class="">
-                <input name="spree_user[remember_me]" type="hidden" value="0"><div class="icheckbox_square-green iCheck-margin" style="position: relative;"><input type="checkbox" value="1" name="spree_user[remember_me]" id="spree_user_remember_me" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
-                <label for="spree_user_remember_me" class="">Remember me</label>
+            <div class="checkbox" style="padding-left:20px">
+              <label>
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me, Spree.t(:remember_me) %>
               </label>
             </div>
             <div class="form-group">
-              <input type="submit" name="commit" value="Login" class="btn btn-lg btn-success btn-block" tabindex="3">
+              <%= f.submit Spree.t(:login), :class => 'btn btn-lg btn-success btn-block', :tabindex => 3 %>
             </div>
           </fieldset>
-        </form> <!--userForm-->
+        <% end %>
+        <!--userForm-->
       </div>
+
       <div class="modal-footer">
-          <p class="text-center"> Not here before? <a data-toggle="modal" data-dismiss="modal"
-                                                      href="#ModalSignup"> Sign Up. </a> <br>
-              <a href="#"> Lost your password? </a></p>
+          <p class="text-center"> Not here before? <strong>
+          <a data-toggle="modal" data-dismiss="modal" href="#ModalSignup"> Sign Up. </a>
+          <br><a data-toggle="modal" data-dismiss="modal" href="#ModalRecover"> Lost your password? </a></strong></p>
       </div>
     </div>  <!-- /.modal-content -->
   </div>  <!-- /.modal-dialog -->
 </div>  <!-- /.Modal Login -->
+
+
+
+
+
+
+
+
+<!-- Modal Recover Password start -->
+<div class="modal signUpContent fade" id="ModalRecover" tabindex="-1" role="dialog">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+          <h3 class="modal-title-site text-center"> Recover Password </h3>
+      </div>
+      <div class="modal-body">
+        <%= form_for Spree::User.new, :as => :spree_user, :url => spree.reset_password_path do |f| %>
+        <p>
+          <%= f.label :email, Spree.t(:email) %><br />
+          <%= f.email_field :email, :class => "form-control" %>
+        </p>
+        <p>
+          <%= f.submit Spree.t(:reset_password), :class => 'btn btn-lg btn-success btn-block' %>
+        </p>
+      <% end %>
+        <!--userForm-->
+      </div>
+
+      <div class="modal-footer">
+        <p class="text-center"> Not here before?
+          <a data-toggle="modal" data-dismiss="modal" href="#ModalSignup"><b>Sign Up.</b></a>
+          <br>
+          Already member?<a data-toggle="modal" data-dismiss="modal" href="#ModalLogin"> <b>Sign in</b></a>
+        </p>
+      </div>
+    </div>  <!-- /.modal-content -->
+  </div>  <!-- /.modal-dialog -->
+</div>  <!-- /.Modal Recover Password -->
+
+
+
+
+
+
 
 
 
@@ -54,34 +99,39 @@
         <div class="control-group">
           <a class="fb_button btn  btn-block btn-lg " href="#"> SIGNUP WITH FACEBOOK </a>
         </div>
+        <br>
+        <div class="control-group" style="background: #e15242">
+          <a class="gp_button btn  btn-block btn-lg " href="#"> SIGNUP WITH google+ </a>
+        </div>
         <h5 style="padding:10px 0 10px 0;" class="text-center"> OR </h5>
-        <form class="new_spree_user" id="new_spree_user" action="/signup" accept-charset="UTF-8" method="post">
-          <input name="utf8" type="hidden" value="✓">
-          <input type="hidden" name="authenticity_token" value="zewnOuu1lV6siz+73RAk7fRLWfjlU62xvKYq/82Q7c7iGjIMf2vhfz3AMr0r1Z+ExAKAaaBuI0CJSjvvegN9Pg==">
+
+        <%# @body_id = 'signup' %>
+        <%= form_for Spree::User.new, :as => :spree_user, :url => spree.registration_path do |f| %>
+          <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
           <div data-hook="signup_inside_form">
+            <%#= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
             <fieldset id="password-credentials">
               <div class="form-group">
-                <input class="form-control" placeholder="Email" type="email" name="spree_user[email]" id="spree_user_email">
+                <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email) %>
               </div>
-              <hr>
+              <hr />
               <div class="form-group">
-                <input class="form-control" placeholder="Password" type="password" name="spree_user[password]" id="spree_user_password">
+                <%= f.password_field :password, :class => 'form-control', :placeholder => Spree.t(:password) %>
               </div> 
               <div class="form-group">
-                <input class="form-control" placeholder="Password Confirmation" type="password" name="spree_user[password_confirmation]" id="spree_user_password_confirmation">
+                <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => Spree.t(:confirm_password) %>
               </div> 
             </fieldset>
-            <div data-hook="signup_below_password_fields">
-            </div>
-            <p>
-              <input type="submit" name="commit" value="Create" class="btn btn-lg btn-success btn-block">
-            </p>
+            <div data-hook="signup_below_password_fields"></div>
+
+            <p><%= f.submit Spree.t(:create), :class => 'btn btn-lg btn-success btn-block' %></p>
           </div>
-        </form>  <!--userForm-->
+        <% end %>
+        <!--userForm-->
       </div>
       <div class="modal-footer">
         <p class="text-center"> Already member? 
-          <a data-toggle="modal" data-dismiss="modal" href="#ModalLogin"> Sign in </a>
+          <a data-toggle="modal" data-dismiss="modal" href="#ModalLogin"> <b>Sign in</b></a>
         </p>
       </div>
     </div>    <!-- /.modal-content -->
