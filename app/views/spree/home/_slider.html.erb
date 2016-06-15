@@ -1,49 +1,23 @@
 <div class="row">
   <div class=" image-show-case-wrapper center-block relative col-lg-12">
     <div id="imageShowCase" class="owl-carousel owl-theme">
-      <div class="product-slide">
+    <% admin_sliders.each do |admin_slider|%>
+      <div class="product-slide" >
         <div class="box-content-overly box-content-overly-white">
           <div class="box-text-table">
-            <div class="box-text-cell ">
+            <%= link_to products_path, :class => 'box-text-cell' do%>
               <div class="box-text-cell-inner ">
-                <h1>On sale</h1>
-                <a class="btn btn-stroke-light"> SHOP NOW</a>
+                <h1><%= admin_slider.title %></h1>
+                <p class="btn btn-stroke-light"><strong>
+                <%= admin_slider.description %> </strong></p>
               </div>
-            </div>
+            <%end%>
           </div>
         </div>
-        <a href="#"><img class="img-responsive" src="assets/slider/single-img/1.jpg" alt="img"></a>
-        </div>
-        <!-- /.product-slide  -->
-        <div class="product-slide">
-          <div class="box-content-overly box-content-overly-white">
-            <div class="box-text-table">
-              <div class="box-text-cell ">
-                <div class="box-text-cell-inner ">
-                  <h1>DISCOUNTS UP TO 50% OFF</h1>
-                  <a class="btn btn-stroke-light"> SHOP NOW</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="#"><img class="img-responsive" src="assets/slider/single-img/2.jpg" alt="img">
-          </a>
-        </div>
-        <!-- /.product-slide  -->
-        <div class="product-slide">
-          <div class="box-content-overly box-content-overly-white">
-            <div class="box-text-table">
-              <div class="box-text-cell ">
-                <div class="box-text-cell-inner ">
-                  <h1>NEW Accessories</h1>
-                  <a class="btn btn-stroke-light"> SHOP NOW</a>
-                </div>
-              </div>
-          </div>
-        </div>
-          <a href="#"><img class="img-responsive" src="assets/slider/single-img/3.jpg" alt="img"></a>
+        <%= link_to image_tag(admin_slider.attachment.url) %>
       </div>
-        <!-- /.product-slide  -->
+      <!-- /.product-slide  -->
+    <% end %>
     </div>
       <!--/#imageShowCase -->
 
@@ -53,7 +27,3 @@
   </div>
     <!--/.image-show-case-wrapper -->
 </div>
-
-<div style="clear:both"></div>
-
-
