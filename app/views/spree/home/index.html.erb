@@ -1,5 +1,5 @@
-<%= render :partial => 'slider', :locals => {:admin_sliders => @admin_sliders} %>
-<%= render :partial => 'categories' %>
+<%= render :partial => 'slider', :locals => {:admin_sliders => @admin_sliders} if !@admin_sliders.blank? %>
+<%= render :partial => 'categories', :locals => {:admin_categories => @admin_categories} if !@admin_categories.blank? %>
 
 <%#= render :partial => 'new_arrivals', :locals => { :products => @products, :taxon => @taxon } %>
 <div class="parallax-section parallax-image-1">

@@ -1,0 +1,16 @@
+<%= render :partial => 'spree/admin/shared/admin_header' %>
+<%= render partial: 'spree/admin/shared/admin_content_header' %>
+
+<div class="container" style="padding-top:100px">
+  <%= flash_alert(flash) %>
+<%= link_to 'Edit', edit_admin_category_path(@admin_category), class: 'btn btn-primary' %>
+<%= link_to 'Back', admin_categories_path, class: 'btn btn-info'%>
+  <table class="table" id="listing_products">
+    <tbody>
+          <tr><td class="sku">Title: <%= @admin_category.title rescue '' %></td></tr>
+          <tr><td class="image">Image: <%= image_tag(@admin_category.attachment.url(:category))  %></td></tr>
+          <tr><td class="text-center">Description: <%= @admin_category.description rescue '' %></td></tr>
+          <tr><td class="text-center">Target Link<%= @admin_category.target_url rescue '' %></td></tr>
+    </tbody>
+  </table>
+</div>

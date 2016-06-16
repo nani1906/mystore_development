@@ -1,0 +1,50 @@
+<%= render :partial => 'spree/admin/shared/admin_header' %>
+<%= render partial: 'spree/admin/shared/admin_content_header' %>
+
+<div class="container" style="padding-top:100px">
+
+  <% content_for :page_title do %>
+    <%= plural_resource_name(Admin::Category) %>
+  <% end %>
+  <div class="panel-default">
+  <%= button_link_to Spree.t(:back_to_menu), spree.admin_orders_path, { :class => "btn-info pull-left", :icon => 'back', :id => 'admin_orders' } %>
+
+  <%= button_link_to Spree.t(:new_category), new_admin_category_path, { :class => "btn-success pull-right", :icon => 'add', :id => 'admin_new_category' } %>
+  </div>
+  </br>
+  </br>
+  <%= flash_alert(flash) %>
+  <% if !@admin_categories.blank? %>
+    <table class="table" id="listing_products">
+      <thead>
+        <tr data-hook="admin_products_index_headers">
+          <th><%= Spree.t(:title) %></th>
+          <th><%= Spree.t(:image) %></th>
+          <th><%= Spree.t(:description) %></th>
+          <th><%= Spree.t(:target_link) %></th>
+          <th data-hook="admin_products_index_header_actions" class="actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @admin_categories.each do |category| %>
+          <tr>
+            <td class="sku"><%= category.title rescue '' %></td>
+            <td class="image"><%= image_tag(category.attachment.url(:mini))  %></td>
+            <td class="sku"><%= category.description rescue '' %></td>
+            <td class="sku"><%= category.target_url rescue '' %></td>
+            <td class="actions actions-3 text-right" data-hook="min_products_index_row_actions">
+              <%= link_to 'Show', category, no_text: true, class: 'btn btn-success' %>
+              <%= link_to 'Edit', edit_admin_category_path(category), no_text: true, class: 'btn btn-primary' %>
+              <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, no_text: true, class: 'btn btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="alert alert-info no-objects-found">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Admin::Category)) %>,
+      <%= link_to Spree.t(:add_one), new_admin_category_path %>!
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
+    resources :categories
+  end
+  namespace :admin do
     resources :sliders
   end
   # namespace :spree do
@@ -79,5 +82,8 @@ Spree::Core::Engine.add_routes do
           post :update
         end
       end
+    end
+    namespace :admin do
+      resources :categories
     end
 end
