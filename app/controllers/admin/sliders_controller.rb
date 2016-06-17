@@ -47,6 +47,31 @@ class Admin::SlidersController < ApplicationController
     end
   end
 
+
+  # GET /admin/sliders/:id/edit
+  def edit
+    if current_spree_user.admin?
+      @taxonomies = Spree::Taxonomy.includes(root: :children)
+        @target_paths = {}
+        max_level = Spree::Config[:max_level_in_taxons_menu] || 1
+          @taxonomies.each do |taxonomy|
+            cache [I18n.locale, taxonomy, max_level, @taxon] do
+              taxonomy.name
+              return '' if max_level < 1 || taxonomy.root.leaf?
+                taxons = taxonomy.root.children.map do |taxon|
+                  # @target_paths.merge!("#{taxon.name}": "#{seo_url(taxon)}")
+                  @target_paths[:"#{taxon.name}"] = spree.nested_taxons_path(taxon.permalink)
+                  taxon.children.map do |child|
+                    @target_paths[:"#{child.name}"] = spree.nested_taxons_path(child.permalink)
+                  end
+                end
+              end
+            end
+    else
+      redirect_to spree.admin_unauthorized_path
+    end
+  end
+
   # POST /admin/sliders
   # POST /admin/sliders.json
   def create
