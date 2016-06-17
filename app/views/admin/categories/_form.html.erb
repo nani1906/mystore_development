@@ -12,17 +12,18 @@
   <% end %>
   <div class="form-group">
     <label class="control-label">Title</label>
-    <%= f.text_field :title, class: 'form-control', maxlength: 30 %>
+    <%= f.text_field :title, class: 'form-control', maxlength: 50 %>
   </div>
 
   <div data-hook="file" class="form-group">
-    <%= f.label :attachment, Spree.t(:filename) %>
+    <label class="control-label">Image</label>
+    <label class="control-label" style="color:#ff0000">(Minimum Resolution required (Width x Height):: 450x360)</label>
     <%= f.file_field :attachment %>
   </div>
 
   <div class="form-group">
-    <label class="control-label">Title URL</label>
-    <%= f.text_field :target_url, class: 'form-control', maxlength: 50 %>
+    <label class="control-label">Target Path:</label>
+    <%= f.select :target_url, options_for_select(@target_paths) %>
   </div>
 
 <div class="actions">

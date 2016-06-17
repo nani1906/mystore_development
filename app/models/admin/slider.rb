@@ -1,6 +1,6 @@
 class Admin::Slider < ActiveRecord::Base
   has_attached_file :attachment,
-                    :styles => { :mini => '48x48>', :large => '1920x800>', :slider => '1600x750>'},
+                    :styles => { :mini => '48x48>', :slider => '1300x550>'},
                     :url => "slider/:id/:style/:basename.:extension",
                     :path => ":rails_root/app/assets/images/slider/:id/:style/:basename.:extension",
                      :default_style => :large

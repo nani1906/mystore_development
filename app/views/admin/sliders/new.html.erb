@@ -8,9 +8,9 @@
     <%= plural_resource_name(Admin::Slider) %>
   <% end %>
 
-	<h1>New Admin Slider</h1>
+	<h1>New Slider</h1>
 
-	<%= render 'form' %>
+	<%= render 'form', :locals => {:target_paths => @target_paths} %>
 
 	<%= link_to 'Back', admin_sliders_path, class: 'btn btn-info' %>
 </div>

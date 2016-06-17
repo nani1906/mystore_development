@@ -8,9 +8,8 @@
     <%= plural_resource_name(Admin::Category) %>
   <% end %>
 
-	<h1>New Admin Category</h1>
-
-	<%= render 'form' %>
+	<h1>New Category</h1>
+	<%= render 'form', :locals => {:target_paths => @target_paths} %>
 
 	<%= link_to 'Back', admin_categories_path, class: 'btn btn-info' %>
 </div>

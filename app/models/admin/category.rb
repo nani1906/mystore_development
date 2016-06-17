@@ -1,6 +1,6 @@
 class Admin::Category < ActiveRecord::Base
   has_attached_file :attachment,
-                    :styles => { :mini => '48x48>', :large => '1920x800>', :category => '452x228>'},
+                    :styles => { :mini => '48x48>', :category => '450x360>'},
                     :url => "category/:id/:style/:basename.:extension",
                     :path => ":rails_root/app/assets/images/category/:id/:style/:basename.:extension",
                      :default_style => :large

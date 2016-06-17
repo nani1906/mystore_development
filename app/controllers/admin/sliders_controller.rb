@@ -26,6 +26,22 @@ class Admin::SlidersController < ApplicationController
   def new
     if current_spree_user.admin?
       @admin_slider = Admin::Slider.new
+      @taxonomies = Spree::Taxonomy.includes(root: :children)
+        @target_paths = {}
+        max_level = Spree::Config[:max_level_in_taxons_menu] || 1
+          @taxonomies.each do |taxonomy|
+            cache [I18n.locale, taxonomy, max_level, @taxon] do
+              taxonomy.name
+              return '' if max_level < 1 || taxonomy.root.leaf?
+                taxons = taxonomy.root.children.map do |taxon|
+                  # @target_paths.merge!("#{taxon.name}": "#{seo_url(taxon)}")
+                  @target_paths[:"#{taxon.name}"] = spree.nested_taxons_path(taxon.permalink)
+                  taxon.children.map do |child|
+                    @target_paths[:"#{child.name}"] = spree.nested_taxons_path(child.permalink)
+                  end
+                end
+              end
+            end
     else
       redirect_to spree.admin_unauthorized_path
     end
