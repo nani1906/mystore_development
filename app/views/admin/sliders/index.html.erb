@@ -1,0 +1,53 @@
+<%= render :partial => 'spree/admin/shared/admin_header' %>
+<%= render partial: 'spree/admin/shared/admin_content_header' %>
+
+<div class="container" style="padding-top:100px">
+  <%= flash_alert(flash) %>
+
+  <% content_for :page_title do %>
+    <%= plural_resource_name(Admin::Slider) %>
+  <% end %>
+  <div class="panel-default">
+  <%= button_link_to Spree.t(:Back_to_menu), spree.admin_orders_path, { :class => "btn-info pull-left", :icon => 'back', :id => 'admin_orders' } %>
+
+  <%= button_link_to Spree.t(:new_slider), new_admin_slider_path, { :class => "btn-success pull-right", :icon => 'add', :id => 'admin_new_slider' } %>
+  </div>
+  </br>
+  </br>
+  <%= flash_alert(flash) %>
+  </br>
+  <h1 align="center" style="color:#0000FF">Sldiers</h1>
+  <% if !@admin_sliders.blank? %>
+    <table class="table" id="listing_products">
+      <thead>
+        <tr data-hook="admin_products_index_headers">
+          <th><%= Spree.t(:title) %></th>
+          <th><%= Spree.t(:image) %></th>
+          <th class="text-center"><%= Spree.t(:description) %></th>
+          <th class="text-center"><%= Spree.t(:target_link) %></th>
+          <th data-hook="admin_products_index_header_actions" class="actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @admin_sliders.each do |slider| %>
+          <tr>
+            <td class="sku"><%= slider.title rescue '' %></td>
+            <td class="image"><%= image_tag(slider.attachment.url(:mini))  %></td>
+            <td class="text-center"><%= slider.description rescue '' %></td>
+            <td class="text-center"><%= slider.target_url rescue '' %></td>
+            <td class="actions actions-3 text-right" data-hook="min_products_index_row_actions">
+              <%= link_to 'Show', slider, no_text: true, class: 'btn btn-success' %>
+              <%= link_to 'Edit', edit_admin_slider_path(slider), no_text: true, class: 'btn btn-primary' %>
+              <%= link_to 'Destroy', slider, method: :delete, data: { confirm: 'Are you sure?' }, no_text: true, class: 'btn btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="alert alert-info no-objects-found">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Admin::Slider)) %>,
+      <%= link_to Spree.t(:add_one), new_admin_slider_path %>!
+    </div>
+  <% end %>
+</div>

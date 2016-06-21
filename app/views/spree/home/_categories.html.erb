@@ -1,0 +1,26 @@
+<section class="section-header" id="section-category">
+  <div class="container">
+    <div class="hero-section-header ">
+      <h3 class="section-title style2 text-center">
+        <span><strong>OUR FAVORITE CATEGORY</strong></span>
+      </h3>
+<!--             <h3 class="hero-section-title">OUR FAVORITE CATEGORY</h3> -->
+    </div>
+    <div class="row row-centered">
+      <% admin_categories.each do |category| %>
+      <div class="block-explore col-centered col-sm-4 col-xs-4 col-xs-min-12">
+        <div class="inner">
+            <%= link_to category.target_url, :class => 'img-block' do%>
+              <div class="overly hw100">
+                <span class="explore-title"> <%= category.title %></span>
+              </div>
+              <%= image_tag(category.attachment.url(:category), class: 'img-responsive') %>
+            <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+

@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
-
+  namespace :admin do
+    resources :categories
+  end
+  namespace :admin do
+    resources :sliders
+  end
+  # namespace :spree do
+  #   namespace :admin do
+  #     resources :sliders
+  #   end
+  # end
   # This line mounts Spree's routes at the root of your application.
   # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
   # If you would like to change where this engine is mounted, simply change the :at option to something different.
   #
   # We ask that you don't use the :as option here, as Spree relies on it being the default of "spree"
   mount Spree::Core::Engine, at: '/'
-          # The priority is based upon order of creation: first created -> highest priority.
+  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -60,4 +70,20 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+end
+Spree::Core::Engine.add_routes do
+    namespace :admin do
+      resources :sliders do
+        collection do
+          get :index
+          post :create
+          get :new
+          get :show
+          post :update
+        end
+      end
+    end
+    namespace :admin do
+      resources :categories
+    end
 end

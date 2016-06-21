@@ -1,65 +1,66 @@
 <div class="container main-container">
-    <div class="morePost row featuredPostContainer style2 globalPaddingTop ">
-        <h3 class="section-title style2 text-center"><span>FEATURES PRODUCT</span></h3>
-        <div class="container">
-            <div class="row xsResponse">
-                <% if products.any? %>
-                <% products.each do |product| %>
-                    <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
-                    <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
-                        <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="product">
-                                <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left"><i class="glyphicon glyphicon-heart"></i></a>
-                                <div class="image">
-                                    <!-- <div class="quickview">
-                                        <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
-                                           data-target="#productSetailsModalAjax">Quick View </a>
-                                    </div> -->
-                                      <%= link_to small_image(product, itemprop: "image"), url, itemprop: 'url' %>
-                                    <div class="promotion"><span class="new-product"> NEW</span>
-                                            <% promotions = product.possible_promotions %>
-                                            <% if promotions.any? %>
-                                                <span class="discount">
-                                                    <% promotions.each do |promotion| %>
-                                                        <h4><%= promotion.name %></h4>
-                                                        <p><%= promotion.description %></p>
-                                                    <% end %>
-                                                </span>
-                                            <% end %>
-                                    </div>
-                                </div>
-                                <div class="description">
-                                    <h4><%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %></h4>
-                                    <p><%= product_description(product) %></p>
-                                    <span class="size">XL / XXL / S </span>
-                                </div>
-                                <div class="price">
-                                    <span><%= display_price(product) %></span>
-                                    <span class="old-price">$75</span>
-                                </div>
-                                <div class="action-control">
-                                    <span class="add2cart">
-                                        <%= link_to "Qucik View", url , :class => "btn btn-primary" %>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+  <div class="morePost row featuredPostContainer style2 globalPaddingTop ">
+    <h3 class="section-title style2 text-center"><span>FEATURES PRODUCT</span></h3>
+    <div class="container">
+      <div class="row xsResponse">
+        <% if products.any? %>
+          <% products.each do |product| %>
+            <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
+            <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
+              <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6" style="margin-bottom:35px">
+                <div class="product" style="520px">
+                  <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left"><i class="glyphicon glyphicon-heart"></i></a>
+                  <div class="image">
+<!--                     <div class="quickview">
+                        <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
+                           data-target="#productSetailsModalAjax">Quick View </a>
+                    </div> -->
+                  <%= link_to product_image(product), url, itemprop: 'url' %>
+                  <div class="promotion"><span class="new-product"> NEW</span>
+                    <% promotions = product.possible_promotions %>
+                    <% if promotions.any? %>
+                      <span class="discount">
+                        <% promotions.each do |promotion| %>
+                          <h4><%= promotion.name %></h4>
+                          <p><%= promotion.description %></p>
                         <% end %>
-                    <!--/.item-->
-                <% end %>
-                <% end %>
-            </div>
-            <!-- /.row xsResponse -->
-            <div class="row">
-                <div class="load-more-block text-center">
-                    <a class="btn btn-thin" href="#"> <i class="fa fa-plus-sign">+</i>
-                    load more products</a>
+                      </span>
+                    <% end %>
+                  </div>
                 </div>
+                <div class="description">
+                    <h4><%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %></h4>
+                    <p><%= product_description(product) %></p>
+                    <span class="size">XL / XXL / S </span>
+                </div>
+                <div class="price">
+                    <span><%= display_price(product) %></span>
+                    <span class="old-price">$75</span>
+                </div>
+                <div class="action-control">
+                  <%= link_to url, :class => 'btn btn-primary' do %>
+                    <span class="add2cart">
+                    <i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;Add to cart</span>
+                  <% end %>
+                </div>
+              </div>
             </div>
-            <!-- /.row -->
-        </div>
-        <!--/.container-->
+            <% end %>
+            <!--/.item-->
+          <% end %>
+        <% end %>
+      </div>
+      <!-- /.row xsResponse -->
+      <div class="row">
+          <div class="load-more-block text-center">
+              <a class="btn btn-thin" href="#"> <i class="fa fa-plus-sign">+</i>
+              load more products</a>
+          </div>
+      </div>
+        <!-- /.row -->
     </div>
+      <!--/.container-->
+  </div>
     <!--/.featuredPostContainer-->
 </div>
 <!--/.main - container-->

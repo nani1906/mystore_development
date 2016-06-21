@@ -1,109 +1,94 @@
-<%= render :partial => 'slider', :locals => { :products => @products, :taxon => @taxon } %>
-
-
-
-
-<%= render :partial => 'new_arrivals', :locals => { :products => @products, :taxon => @taxon } %>
-
-
+<%= render :partial => 'slider', :locals => {:admin_sliders => @admin_sliders} if !@admin_sliders.blank? %>
+<%= render :partial => 'categories', :locals => {:admin_categories => @admin_categories} if !@admin_categories.blank? %>
+<%#= render :partial => 'new_arrivals', :locals => { :products => @products, :taxon => @taxon } %>
 <div class="parallax-section parallax-image-1">
-    <div class="container">
-        <div class="row ">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="parallax-content clearfix">
-                    <h1 class="parallaxPrce"> $200 </h1>
-
-                    <h2 class="uppercase">FREE INTERNATIONAL SHIPPING! Get Free Shipping Coupons</h2>
-
-                    <h3> Energistically develop parallel mindshare rather than premier deliverables. </h3>
-
-                    <div style="clear:both"></div>
-                    <a class="btn btn-discover "> <i class="fa fa-shopping-cart"></i> SHOP NOW </a></div>
-            </div>
+  <div class="container">
+    <div class="row ">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="parallax-content clearfix">
+          <h1 class="parallaxPrce"> $200 </h1>
+          <h2 class="uppercase">FREE INTERNATIONAL SHIPPING! Get Free Shipping Coupons</h2>
+          <h3> Energistically develop parallel mindshare rather than premier deliverables. </h3>
+          <div style="clear:both"></div>
+          <a class="btn btn-discover "> <i class="fa fa-shopping-cart"></i> SHOP NOW </a>
         </div>
-        <!--/.row-->
+      </div>
     </div>
-    <!--/.container-->
+    <!--/.row-->
+  </div>
+  <!--/.container-->
 </div>
 <!--/.parallax-image-1-->
 
 <div class="container main-container">
-
-    <!-- Main component call to action -->
-
-<%= render :partial => 'features_products', :locals => { :products => @products, :taxon => @taxon } %>
-
-
-
-
-
-    <hr class="no-margin-top">
-    <div class="width100 section-block ">
-        <div class="row featureImg">
-            <div class="col-md-3 col-sm-3 col-xs-6"><a href="category.html"><img src="assets/site/new-collection-1.jpg"
-                                                                                 class="img-responsive" alt="img"></a>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6"><a href="category.html"><img src="assets/site/new-collection-2.jpg"
-                                                                                 class="img-responsive" alt="img"></a>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6"><a href="category.html"><img src="assets/site/new-collection-3.jpg"
-                                                                                 class="img-responsive" alt="img"></a>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6"><a href="category.html"><img src="assets/site/new-collection-4.jpg"
-                                                                                 class="img-responsive" alt="img"></a>
-            </div>
+<!-- Main component call to action -->
+<%= render :partial =>'features_products', :locals => {:products => @products, :taxon => @taxon} %>
+  <hr class="no-margin-top">
+  <div class="width100 section-block ">
+    <div class="row featureImg">
+        <div class="col-md-3 col-sm-3 col-xs-6">
+          <a href="category.html"><img src="assets/site/new-collection-1.jpg" class="img-responsive" alt="img"></a>
         </div>
-        <!--/.row-->
-    </div>
-    <!--/.section-block-->
-
-    <div class="width100 section-block">
-        <h3 class="section-title"><span> BRAND</span> <a id="nextBrand" class="link pull-right carousel-nav"> <i
-                class="fa fa-angle-right"></i></a> <a id="prevBrand" class="link pull-right carousel-nav"> <i
-                class="fa fa-angle-left"></i> </a></h3>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="no-margin brand-carousel owl-carousel owl-theme">
-                    <li><a><img src="assets/brand/1.gif" alt="img"></a></li>
-                    <li><img src="assets/brand/2.png" alt="img"></li>
-                    <li><img src="assets/brand/3.png" alt="img"></li>
-                    <li><img src="assets/brand/4.png" alt="img"></li>
-                    <li><img src="assets/brand/5.png" alt="img"></li>
-                    <li><img src="assets/brand/6.png" alt="img"></li>
-                    <li><img src="assets/brand/7.png" alt="img"></li>
-                    <li><img src="assets/brand/8.png" alt="img"></li>
-                    <li><img src="assets/brand/1.gif" alt="img"></li>
-                    <li><img src="assets/brand/2.png" alt="img"></li>
-                    <li><img src="assets/brand/3.png" alt="img"></li>
-                    <li><img src="assets/brand/4.png" alt="img"></li>
-                    <li><img src="assets/brand/5.png" alt="img"></li>
-                    <li><img src="assets/brand/6.png" alt="img"></li>
-                    <li><img src="assets/brand/7.png" alt="img"></li>
-                    <li><img src="assets/brand/8.png" alt="img"></li>
-                </ul>
-            </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+          <a href="category.html"><img src="assets/site/new-collection-2.jpg" class="img-responsive" alt="img"></a>
         </div>
-        <!--/.row-->
+        <div class="col-md-3 col-sm-3 col-xs-6">
+          <a href="category.html"><img src="assets/site/new-collection-3.jpg" class="img-responsive" alt="img"></a>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+          <a href="category.html"><img src="assets/site/new-collection-4.jpg" class="img-responsive" alt="img"></a>
+        </div>
     </div>
-    <!--/.section-block-->
+    <!--/.row-->
+  </div>
+  <!--/.section-block-->
 
+  <div class="width100 section-block">
+    <h3 class="section-title"><span> BRAND</span>
+      <a id="nextBrand" class="link pull-right carousel-nav"><i class="fa fa-angle-right"></i></a>
+      <a id="prevBrand" class="link pull-right carousel-nav"><i class="fa fa-angle-left"></i> </a>
+    </h3>
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="no-margin brand-carousel owl-carousel owl-theme">
+          <li><a><img src="assets/brand/1.gif" alt="img"></a></li>
+          <li><img src="assets/brand/2.png" alt="img"></li>
+          <li><img src="assets/brand/3.png" alt="img"></li>
+          <li><img src="assets/brand/4.png" alt="img"></li>
+          <li><img src="assets/brand/5.png" alt="img"></li>
+          <li><img src="assets/brand/6.png" alt="img"></li>
+          <li><img src="assets/brand/7.png" alt="img"></li>
+          <li><img src="assets/brand/8.png" alt="img"></li>
+          <li><img src="assets/brand/1.gif" alt="img"></li>
+          <li><img src="assets/brand/2.png" alt="img"></li>
+          <li><img src="assets/brand/3.png" alt="img"></li>
+          <li><img src="assets/brand/4.png" alt="img"></li>
+          <li><img src="assets/brand/5.png" alt="img"></li>
+          <li><img src="assets/brand/6.png" alt="img"></li>
+          <li><img src="assets/brand/7.png" alt="img"></li>
+          <li><img src="assets/brand/8.png" alt="img"></li>
+        </ul>
+      </div>
+    </div>
+    <!--/.row-->
+  </div>
+  <!--/.section-block-->
 </div>
 <!--main-container-->
 
 <div class="parallax-section parallax-image-2">
-    <div class="w100 parallax-section-overley">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="parallax-content clearfix">
-                        <h1 class="xlarge"> Trusted Seller 500+ </h1>
-                        <h5 class="parallaxSubtitle"> Lorem ipsum dolor sit amet consectetuer </h5>
-                    </div>
-                </div>
-            </div>
+  <div class="w100 parallax-section-overley">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="parallax-content clearfix">
+            <h1 class="xlarge"> Trusted Seller 500+ </h1>
+            <h5 class="parallaxSubtitle"> Lorem ipsum dolor sit amet consectetuer </h5>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!--/.parallax-section-->
 
@@ -111,12 +96,12 @@
 <!-- Modal -->
 <div class="modal fade" id="productSetailsModalAjax" tabindex="-1" role="dialog"
      aria-labelledby="productSetailsModalAjaxLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        </div>
-        <!-- /.modal-content -->
+  <div class="modal-dialog">
+    <div class="modal-content">
     </div>
-    <!-- /.modal-dialog -->
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
 <!-- End Modal -->
@@ -144,4 +129,3 @@
 
 
 </script>
-

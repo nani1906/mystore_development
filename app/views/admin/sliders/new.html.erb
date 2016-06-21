@@ -1,0 +1,16 @@
+<%= render :partial => 'spree/admin/shared/admin_header' %>
+<%= render partial: 'spree/admin/shared/admin_content_header' %>
+
+<div class="container" style="padding-top:100px">
+  <%= flash_alert(flash) %>
+
+  <% content_for :page_title do %>
+    <%= plural_resource_name(Admin::Slider) %>
+  <% end %>
+
+	<h1>New Slider</h1>
+
+	<%= render 'form', :locals => {:target_paths => @target_paths} %>
+
+	<%= link_to 'Back', admin_sliders_path, class: 'btn btn-info' %>
+</div>
