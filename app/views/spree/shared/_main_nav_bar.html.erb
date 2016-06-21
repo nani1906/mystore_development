@@ -248,23 +248,23 @@
             <div class="w100 miniCartTable scroll-pane">
               <table>
                 <tbody>
+                  <% if @order.blank? %>
                   <tr class="miniCartProduct">
-                    <td style="width:20%" class="miniCartProductThumb">
-                      <div>
-                        <a href="product-details.html"> <img src="assets/product/3.jpg" alt="img"></a>
-                      </div>
-                    </td>
-                    <td style="width:40%">
-                      <div class="miniCartDescription">
-                        <h4><a href="product-details.html"> TSHOP Tshirt DO9 </a></h4>
-                        <span class="size"> 12 x 1.5 L </span>
-                        <div class="price"><span> $22 </span></div>
-                      </div>
-                    </td>
-                    <td style="width:10%" class="miniCartQuantity"><a> X 1 </a></td>
-                    <td style="width:15%" class="miniCartSubtotal"><span> $33 </span></td>
-                    <td style="width:5%" class="delete"><a> x </a></td>
+                    <td><%= Spree.t(:your_cart_is_empty) %></td>
                   </tr>
+                  <% else %>
+                    <%= form_for @order, url: update_cart_path, html: { id: 'update-cart' } do |order_form| %>
+                      <%= render partial: 'spree/shared/line_item', collection: order_form.object.line_items, locals: { order_form: order_form } %>
+                      <tr class="miniCartProduct">
+                        <td></td>
+                        <td colspan="2">
+                        <h4 id="total-price">
+                          <strong>Total</strong>
+                        </h4></td>
+                        <td class="price"><%= order_form.object.display_item_total %></td>
+                      </tr>
+                    <% end %>
+                  <% end %>
                 </tbody>
               </table>
             </div>

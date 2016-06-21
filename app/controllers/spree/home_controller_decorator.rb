@@ -9,5 +9,6 @@ Spree::HomeController.class_eval do
     # @taxonomies = Spree::Taxonomy.accessible_by(current_ability, :read).order('name').includes(:root => :children)
     @admin_sliders =  Admin::Slider.all
     @admin_categories =  Admin::Category.all
+    @order = current_order || Spree::Order.incomplete.find_or_initialize_by(guest_token: cookies.signed[:guest_token])
   end
 end

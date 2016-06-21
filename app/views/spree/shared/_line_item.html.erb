@@ -1,0 +1,30 @@
+<% variant = line_item.variant %>
+
+<%= order_form.fields_for :line_items, line_item do |item_form| %>
+  <tr class="miniCartProduct">
+    <td style="width:20%" class="miniCartProductThumb">
+      <% if variant.images.length == 0 %>
+        <%= link_to small_image(variant.product), variant.product %>
+      <% else %>
+        <%= link_to image_tag(variant.images.first.attachment.url(:small)), variant.product %>
+      <% end %>
+    </td>
+    <td style="width:40%">
+      <div class="miniCartDescription">
+        <h4><strong><%= link_to line_item.name, product_path(variant.product) %></strong></h4>
+        <%= variant.options_text %>
+        <% if line_item.insufficient_stock? %>
+          <span class="out-of-stock">
+            <%= Spree.t(:out_of_stock) %>&nbsp;&nbsp;<br />
+          </span>
+        <% end %>
+      </div>
+    </td>
+    <td style="width:10%" class="miniCartQuantity">X <%= line_item.quantity %></td>
+
+    <td class="price">
+      <%= line_item.display_amount.to_html unless line_item.quantity.nil? %>
+    </td>
+
+  </tr>
+<% end %>
